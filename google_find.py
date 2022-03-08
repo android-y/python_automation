@@ -5,10 +5,10 @@ from selenium.webdriver.chrome import service as fs
 CHROMEDRIVER = r"C:\Users\pando\Desktop\python_automation\chromedriver.exe"
 
 options = webdriver.ChromeOptions()
-# options.add_argument("--headless")
+options.add_argument("--headless")
 
 chrome_service = fs.Service(executable_path= CHROMEDRIVER)
-driver = webdriver.Chrome(service= chrome_service)
+driver = webdriver.Chrome(service= chrome_service, options= options)
 driver.implicitly_wait(10)
 driver.get("https://www.google.com/")
 
