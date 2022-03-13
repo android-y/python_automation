@@ -2,7 +2,10 @@ import tkinter as tk
 from tkinter import ttk
 import tkinter.filedialog
 import pandas as pd
-import pyautogui as pg
+
+from excel_func import excel_read
+from excel_func import excel_write
+from google_find import google_find_func
 
 class Application(tkinter.Frame):
     def __init__(self, root=None):
@@ -31,10 +34,11 @@ class Application(tkinter.Frame):
         self.csv_pass.set(f)
     
     def excel_view(self):
-        g = self.csv_pass.get()
-        print(g)
-        df = pd.read_csv(g, encoding="shift-jis")
-        print(df)
+        excel_pass = self.csv_pass.get()
+        cam_list = excel_read(excel_pass)
+        find_result_list = google_find_func(cam_list)
+        excel_write(excel_pass, find_result_list)
+                
 
 if __name__ == "__main__":
     root = tk.Tk()
