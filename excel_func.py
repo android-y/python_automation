@@ -9,7 +9,7 @@ def excel_write(excel_pass, find_result_list):
     df1 = pd.read_csv(excel_pass, encoding="shift-jis")
     df2 = pd.DataFrame(find_result_list, columns=["タイトル", "概要", "リンク"])
     df_result = pd.concat([df1, df2], axis=1)
-    df_result.to_csv(excel_pass, mode="w", index=False)
+    df_result.to_csv("result.csv", index=False)
     
 
 if __name__ == "__main__":
